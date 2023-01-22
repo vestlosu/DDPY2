@@ -25,16 +25,19 @@ class Library:
     def __init__(self, books):
         self.books = books
 
-    def get_next_book_id(self):
-        if not BOOKS_DATABASE:
+    def get_next_book_id(self) -> int:
+        if not self.books:
             return 1
-        else:
-            return self.id
 
-    def get_index_by_book_id(self):
-        for self.books in enumerate(BOOKS_DATABASE):
-            if self.books:
-                return self.id
+        last_book = self.books[-1]
+        next_id = last_book.id + 1
+        return next_id
+
+
+    def get_index_by_book_id(self) -> int:
+        for index, book in enumerate(self.books):
+            if book.id == id_:
+                return index
         else:
             raise ValueError("Книги с запрашиваемым id не существует")
 
